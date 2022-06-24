@@ -8,6 +8,7 @@ namespace Assets.Architecture.Scripts.CustomBehaviour.BehavioursCollection
         public override void Enter()
         {
             _animator=_unitScript.GetComponent<Animator>();
+            _rb=_unitScript.GetComponent<Rigidbody>();
             _animator.SetBool("Idle", true);
         }
 

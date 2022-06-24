@@ -359,6 +359,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ch15_nonPBR
       objectReference: {fileID: 0}
+    - target: {fileID: 7686570264480761417, guid: 780a4f5f8ca3532428c81e374ea03dca, type: 3}
+      propertyPath: m_Radius
+      value: 0.34
+      objectReference: {fileID: 0}
     - target: {fileID: 7686570264480761418, guid: 780a4f5f8ca3532428c81e374ea03dca, type: 3}
       propertyPath: m_Mass
       value: 50
