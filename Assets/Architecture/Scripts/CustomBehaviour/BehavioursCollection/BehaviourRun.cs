@@ -9,7 +9,6 @@ namespace Assets.Architecture.Scripts.CustomBehaviour.BehavioursCollection
 
         private Vector3 _move;
         private Vector3 _moveDirection;
-        private Vector3 _playerTransform;
 
         private float _horizontalAxis;
         private float _verticalAxis;
@@ -20,7 +19,6 @@ namespace Assets.Architecture.Scripts.CustomBehaviour.BehavioursCollection
             _animator = _unitScript.GetComponent<Animator>();
             _rb = _unitScript.GetComponent<Rigidbody>();
             _animator.SetBool("Run", true);
-            _playerTransform = _unitScript.gameObject.transform.position;
         }
 
         public override void Exit()
@@ -35,9 +33,8 @@ namespace Assets.Architecture.Scripts.CustomBehaviour.BehavioursCollection
 
         public override void FixedUpdate()
         {
-            _rb.MovePosition(_playerTransform + _moveDirection);
+            _rb.MovePosition(_unitScript.gameObject.transform.position + _moveDirection);
         }
-
 
         public BehaviourRun(Unit script) : base(script)
         {
@@ -48,7 +45,7 @@ namespace Assets.Architecture.Scripts.CustomBehaviour.BehavioursCollection
         {
             _horizontalAxis = Input.GetAxis(HORIZONTAL);
             _verticalAxis = Input.GetAxis(VERTICAL);
-            _move = new Vector3(_horizontalAxis, _playerTransform.y, _verticalAxis);
+            _move = new Vector3(_horizontalAxis, 0, _verticalAxis);
             _moveDirection = _move * _speed * Time.fixedDeltaTime;
         }
     }

@@ -4,11 +4,11 @@ namespace Assets.Architecture.Scripts.CustomBehaviour.BehavioursCollection
 {
     public class BehaviourIdle : GeneralBehaviour
     {
-        
+
         public override void Enter()
         {
-            _animator=_unitScript.GetComponent<Animator>();
-            _rb=_unitScript.GetComponent<Rigidbody>();
+            _animator = _unitScript.GetComponent<Animator>();
+            _rb = _unitScript.GetComponent<Rigidbody>();
             _animator.SetBool("Idle", true);
         }
 
@@ -21,6 +21,7 @@ namespace Assets.Architecture.Scripts.CustomBehaviour.BehavioursCollection
         {
 
         }
+
         public override void FixedUpdate()
         {
 
@@ -28,7 +29,7 @@ namespace Assets.Architecture.Scripts.CustomBehaviour.BehavioursCollection
 
         public BehaviourIdle(Unit script) : base(script)
         {
-            
+
         }
     }
 }

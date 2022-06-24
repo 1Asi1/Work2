@@ -6,12 +6,21 @@ namespace Assets.Architecture.Scripts
     public class PlayerController : Unit
     {
         private InputKey _inputKey;
+        private Animator _animator;
+        private Rigidbody _rb;
+
         private bool _isJump = false;
         private bool _isMove = false;
+
+        private float _playerRotationY;
+        private float _mouseSensX = 30f;
 
         private void Awake()
         {
             _inputKey = new InputKey();
+            _animator = GetComponent<Animator>();
+            _rb = GetComponent<Rigidbody>();
+            SetCursorParameters();
         }
 
         private void OnEnable()
@@ -52,6 +61,7 @@ namespace Assets.Architecture.Scripts
         {
             base.Update();
             _inputKey.Update();
+            LookAtMouse();
         }
 
         private void OnDisable()
@@ -91,7 +101,23 @@ namespace Assets.Architecture.Scripts
 
         private void Shot()
         {
+            _behaviourController.SetBehaviour<BehaviourIdle>();
+            _animator.SetTrigger("Shot");
+            _animator.SetTrigger("ShotEnd");
+        }
 
+        private void SetCursorParameters()
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+
+        private void LookAtMouse()
+        {
+            var mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * _mouseSensX;
+            _playerRotationY -= mouseX;
+            var _resultRotate = Quaternion.Euler(0, -_playerRotationY, 0);
+            transform.rotation = _resultRotate;
         }
     }
 }
