@@ -5,9 +5,10 @@ namespace Assets.Architecture.Scripts
 {
     public class PlayerController : Unit
     {
+        [SerializeField]private Gun _gun;
+
         private InputKey _inputKey;
         private Animator _animator;
-        private Rigidbody _rb;
 
         private bool _isJump = false;
         private bool _isMove = false;
@@ -19,7 +20,7 @@ namespace Assets.Architecture.Scripts
         {
             _inputKey = new InputKey();
             _animator = GetComponent<Animator>();
-            _rb = GetComponent<Rigidbody>();
+            _gun=GetComponent<Gun>();
             SetCursorParameters();
         }
 
@@ -103,6 +104,7 @@ namespace Assets.Architecture.Scripts
         {
             _behaviourController.SetBehaviour<BehaviourIdle>();
             _animator.SetTrigger("Shot");
+            _gun.Shot();
             _animator.SetTrigger("ShotEnd");
         }
 

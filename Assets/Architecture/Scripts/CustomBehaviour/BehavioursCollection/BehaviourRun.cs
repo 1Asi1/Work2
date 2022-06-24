@@ -47,6 +47,7 @@ namespace Assets.Architecture.Scripts.CustomBehaviour.BehavioursCollection
             _verticalAxis = Input.GetAxis(VERTICAL);
             _move = new Vector3(_horizontalAxis, 0, _verticalAxis);
             _moveDirection = _move * _speed * Time.fixedDeltaTime;
+            _moveDirection = _unitScript.transform.TransformDirection(_moveDirection);
         }
     }
 }

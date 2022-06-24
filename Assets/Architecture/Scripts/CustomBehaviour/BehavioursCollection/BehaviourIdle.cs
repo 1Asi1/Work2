@@ -19,7 +19,7 @@ namespace Assets.Architecture.Scripts.CustomBehaviour.BehavioursCollection
 
         public override void Update()
         {
-
+            
         }
 
         public override void FixedUpdate()
