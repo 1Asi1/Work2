@@ -16,7 +16,6 @@ namespace Assets.Architecture.Scripts
         private KeyCode _keyCodeInteractive = KeyCode.E;
 
         private Animator _animator;
-        private AudioSource _audioSource;
 
         private void OnTriggerEnter(Collider other)
         {
@@ -54,7 +53,6 @@ namespace Assets.Architecture.Scripts
         {
             _doorIsActive = !_doorIsActive;
             _animator.SetBool(DOORANAME, _doorIsActive);
-            //_audioSource.Play();
         }
 
         private void Update()
