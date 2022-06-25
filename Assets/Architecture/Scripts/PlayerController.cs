@@ -58,15 +58,6 @@ namespace Assets.Architecture.Scripts
             _inputKey.shootingMousLeftPressed -= Shot;
         }
 
-        private void OnCollisionExit(Collision collision)
-        {
-            if (collision.collider.GetComponent<IInteractiveble>() != null)
-            {
-                var component = collision.collider.GetComponent<IInteractiveble>();
-                component.OnActionExit();
-            }
-        }
-
         private void OnCollision(Collision collision)
         {
             if (_isJump)
@@ -75,12 +66,6 @@ namespace Assets.Architecture.Scripts
                 {
                     JumpExit();
                 }
-            }
-
-            if (collision.collider.GetComponent<IInteractiveble>() != null)
-            {
-                var component = collision.collider.GetComponent<IInteractiveble>();
-                component.OnActionEnter();
             }
         }
 
