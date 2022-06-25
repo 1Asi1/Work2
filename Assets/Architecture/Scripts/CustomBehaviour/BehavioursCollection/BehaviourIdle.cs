@@ -4,7 +4,6 @@ namespace Assets.Architecture.Scripts.CustomBehaviour.BehavioursCollection
 {
     public class BehaviourIdle : GeneralBehaviour
     {
-
         public override void Enter()
         {
             _animator = _unitScript.GetComponent<Animator>();
@@ -19,7 +18,7 @@ namespace Assets.Architecture.Scripts.CustomBehaviour.BehavioursCollection
 
         public override void Update()
         {
-            
+
         }
 
         public override void FixedUpdate()

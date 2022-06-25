@@ -5,7 +5,7 @@ namespace Assets.Architecture.Scripts
 {
     public class PlayerController : Unit
     {
-        [SerializeField]private Gun _gun;
+        [SerializeField] private Gun _gun;
 
         private InputKey _inputKey;
         private Animator _animator;
@@ -20,7 +20,7 @@ namespace Assets.Architecture.Scripts
         {
             _inputKey = new InputKey();
             _animator = GetComponent<Animator>();
-            _gun=GetComponent<Gun>();
+            _gun = _gun.GetComponent<Gun>();
             SetCursorParameters();
         }
 
@@ -34,22 +34,7 @@ namespace Assets.Architecture.Scripts
 
         private void OnCollisionEnter(Collision collision)
         {
-            if (_isJump)
-            {
-                if (collision.collider.GetComponent<Grounds>() != null)
-                {
-                    if (_isMove)
-                    {
-                        _behaviourController.SetBehaviour<BehaviourRun>();
-                    }
-                    else
-                    {
-                        _behaviourController.SetBehaviour<BehaviourIdle>();
-                    }
-
-                    _isJump = false;
-                }
-            }
+            OnCollision(collision);
         }
 
         public override void Start()
@@ -71,6 +56,32 @@ namespace Assets.Architecture.Scripts
             _inputKey.moveKeyUp -= RunStop;
             _inputKey.jumpKeyPressed -= Jump;
             _inputKey.shootingMousLeftPressed -= Shot;
+        }
+
+        private void OnCollisionExit(Collision collision)
+        {
+            if (collision.collider.GetComponent<IInteractiveble>() != null)
+            {
+                var component = collision.collider.GetComponent<IInteractiveble>();
+                component.OnActionExit();
+            }
+        }
+
+        private void OnCollision(Collision collision)
+        {
+            if (_isJump)
+            {
+                if (collision.collider.GetComponent<Grounds>() != null)
+                {
+                    JumpExit();
+                }
+            }
+
+            if (collision.collider.GetComponent<IInteractiveble>() != null)
+            {
+                var component = collision.collider.GetComponent<IInteractiveble>();
+                component.OnActionEnter();
+            }
         }
 
         private void AddUnitBehaviour()
@@ -98,6 +109,20 @@ namespace Assets.Architecture.Scripts
                 _isJump = true;
                 _behaviourController.SetBehaviour<BehaviourJump>();
             }
+        }
+
+        private void JumpExit()
+        {
+            if (_isMove)
+            {
+                _behaviourController.SetBehaviour<BehaviourRun>();
+            }
+            else
+            {
+                _behaviourController.SetBehaviour<BehaviourIdle>();
+            }
+
+            _isJump = false;
         }
 
         private void Shot()

@@ -5,7 +5,9 @@ namespace Assets.Architecture.Scripts.CustomBehaviour
     public abstract class GeneralBehaviour : IBehaviour
     {
         public Unit _unitScript;
+
         protected Animator _animator;
+
         protected Rigidbody _rb;
 
         public abstract void Enter();

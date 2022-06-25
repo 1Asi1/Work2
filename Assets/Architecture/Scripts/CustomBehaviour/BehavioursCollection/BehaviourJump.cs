@@ -27,6 +27,7 @@ namespace Assets.Architecture.Scripts.CustomBehaviour.BehavioursCollection
         {
 
         }
+
         public override void FixedUpdate()
         {
             Jump();

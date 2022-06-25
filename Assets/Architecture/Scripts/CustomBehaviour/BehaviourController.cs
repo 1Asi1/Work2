@@ -7,7 +7,9 @@ namespace Assets.Architecture.Scripts.CustomBehaviour
     public class BehaviourController
     {
         public Dictionary<Type, IBehaviour> behavioursMap;
+
         private Unit _unitScript;
+
         private IBehaviour _currentBehaviour;
 
         public void BehaviourStart()
