@@ -37,6 +37,16 @@ namespace Assets.Architecture.Scripts
             OnCollision(collision);
         }
 
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.GetComponent<IInteractiveble>() != null)
+            {
+                var component = other.GetComponent<IInteractiveble>();
+                component.OnActionEnter();
+                _inputKey.onAction += component.OnAction;
+            }
+        }
+
         public override void Start()
         {
             base.Start();
@@ -56,6 +66,16 @@ namespace Assets.Architecture.Scripts
             _inputKey.moveKeyUp -= RunStop;
             _inputKey.jumpKeyPressed -= Jump;
             _inputKey.shootingMousLeftPressed -= Shot;
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.GetComponent<IInteractiveble>() != null)
+            {
+                var component = other.GetComponent<IInteractiveble>();
+                component.OnActionExit();
+                _inputKey.onAction -= component.OnAction;
+            }
         }
 
         private void OnCollision(Collision collision)

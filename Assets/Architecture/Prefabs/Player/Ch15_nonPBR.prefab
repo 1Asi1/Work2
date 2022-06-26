@@ -245,7 +245,7 @@ MonoBehaviour:
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
   m_Cameras: []
-  m_RendererIndex: -1
+  m_RendererIndex: 0
   m_VolumeLayerMask:
     serializedVersion: 2
     m_Bits: 1
@@ -2627,6 +2627,7 @@ GameObject:
   - component: {fileID: 7686570264480761417}
   - component: {fileID: 7686570264480761416}
   - component: {fileID: 8676595676032243118}
+  - component: {fileID: 1507373159}
   m_Layer: 0
   m_Name: Ch15_nonPBR
   m_TagString: Untagged
@@ -2733,6 +2734,19 @@ MonoBehaviour:
   - m_Rig: {fileID: 7686570265151539553}
     m_Active: 1
   m_Effectors: []
+--- !u!135 &1507373159
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7380633703719500573}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &7392660595216413293
 GameObject:
   m_ObjectHideFlags: 0

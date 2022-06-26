@@ -9,6 +9,7 @@ namespace Assets.Architecture.Scripts
         public event Action moveKeyUp;
         public event Action jumpKeyPressed;
         public event Action shootingMousLeftPressed;
+        public event Action onAction;
 
         private bool _movekeysIsPressed=false;
         public void Update()
@@ -38,6 +39,11 @@ namespace Assets.Architecture.Scripts
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 jumpKeyPressed?.Invoke();
+            }
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                onAction?.Invoke();
             }
 
             if (Input.GetMouseButtonDown(0))
