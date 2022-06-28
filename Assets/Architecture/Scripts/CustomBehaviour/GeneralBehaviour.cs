@@ -21,6 +21,8 @@ namespace Assets.Architecture.Scripts.CustomBehaviour
         public GeneralBehaviour(Unit unit)
         {
             _unitScript=unit;
+            _rb=unit.GetComponent<Rigidbody>();
+            _animator=unit.GetComponent<Animator>();
         }
         
     }

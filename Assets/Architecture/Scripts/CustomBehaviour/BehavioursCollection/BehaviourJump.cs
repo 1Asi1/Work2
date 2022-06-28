@@ -11,8 +11,6 @@ namespace Assets.Architecture.Scripts.CustomBehaviour.BehavioursCollection
         private bool _isJumping = false;
         public override void Enter()
         {
-            _animator = _unitScript.GetComponent<Animator>();
-            _rb = _unitScript.GetComponent<Rigidbody>();
             _animator.SetTrigger("Jump");
             _jumpDirection = Vector3.up * _jumpPower;
             _isJumping = true;

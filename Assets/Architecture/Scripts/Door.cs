@@ -16,13 +16,17 @@ namespace Assets.Architecture.Scripts
 
         private Animator _animator;
 
-        public void OnActionEnter()
+        private void Start()
         {
             _canvas = _canvas.GetComponent<Canvas>();
             _text = _text.GetComponent<TextMeshProUGUI>();
-            _animator=GetComponent<Animator>();
+            _animator = GetComponent<Animator>();
+            _text.text = _keyCodeInteractive.ToString();
+        }
+
+        public void OnActionEnter()
+        {
             _canvas.gameObject.SetActive(true);
-            _text.text= _keyCodeInteractive.ToString();
         }
 
         public void OnActionExit()
