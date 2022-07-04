@@ -36,7 +36,7 @@ namespace Assets.Architecture.Scripts.CustomBehaviour.BehavioursCollection
 
         public BehaviourRun(Unit script) : base(script)
         {
-
+            
         }
 
         private void MoveUpdate()
